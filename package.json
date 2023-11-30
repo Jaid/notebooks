@@ -1,0 +1,12 @@
+{
+  "name": "notebooks",
+  "version": "0.0.0",
+  "scripts": {
+    "buildWeb": "cd invokeai/frontend/web && npm install && npm run build",
+    "refresh": "rm --recursive --force invokeai/frontend/web && git reset invokeai/frontend && git pull && git checkout invokeai/frontend/web && npm run installDependencies && npm run buildWeb",
+    "makeVenv": "if [[ -d .venv ]]; then npm run resetVenv; fi && py -3.11 -m venv .venv && .venv/Scripts/python -m pip --require-virtualenv --disable-pip-version-check install --upgrade pip && .venv/Scripts/pip --require-virtualenv --disable-pip-version-check install ipykernel",
+    "untrackGitignore": "git update-index --assume-unchanged .gitignore",
+    "env": "env | sort",
+    "resetVenv": "rm --recursive --force .venv"
+  }
+}
